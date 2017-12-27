@@ -40,7 +40,7 @@
 <h1 id="20171227_3">如何连接数据库</h1>
 
 - View-Windows-Database  DataSource-MySQL
-
+[返回](#20171227_0)
 
 <h1 id="20171227_3">如何连接数据库</h1>
 
