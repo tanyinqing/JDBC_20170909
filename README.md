@@ -19,7 +19,10 @@
 
 - http://search.maven.org/  搜索：mysql java  找第一个
 - 点 all(64) 不要选最新的 选5.1.45
-- 复制 compile 'mysql:mysql-connector-java:5.1.45'
+- 复制 compile 'mysql:mysql-connector-java:5.1.45' 
+    - 这种连接的方式不是太稳定，应该用下载jar包的方式去集成。
+    - 连接后 External Libraries中可以看到这个库。
+    - 实在无法导入就使用 Invalidate Cacher/Restart  使缓存器失效和重启
 <h1 id="20171227_3">如何连接数据库</h1>
 
 - View-Windows-Database  DataSource-MySQL

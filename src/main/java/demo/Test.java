@@ -17,8 +17,8 @@ public class Test {
         // 2.获取数据库连接
         Connection connection= DriverManager.getConnection("jdbc:mysql:///","root","system");
         //3. 准备预编译语句
-        String sql="INSERT INTO db.ip VALUE (NULL ,'?','?','?')";
-        PreparedStatement preparedStatement=connection.prepareStatement(sql);
+        String sql = "INSERT INTO db.ip VALUE(NULL, ?, ?, ?)";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, "1.0.0.0");
         preparedStatement.setString(2, "1.0.0.255");
         preparedStatement.setString(3, "澳大利亚...");
