@@ -16,9 +16,13 @@ CREATE TABLE db.ip (
 )
   COMMENT 'ip表';
 
-SELECT * FROM db.ip;
+SELECT * FROM db.ip ORDER BY id DESC ;
+
+SELECT count(*) FROM db.ip;-- 数据的总条数
 
 INSERT INTO db.ip VALUE (NULL ,'0.0.0.0','0.255.255.255','ANA 保留地址');
 
 -- JDBC：java语言的数据库连接
+
+TRUNCATE db.ip;-- 清空数据库
 

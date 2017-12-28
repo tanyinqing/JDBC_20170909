@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * jdbc java语言的数据库连接
+ */
 public class Test {
     public static void main(String[] args) throws SQLException {
         //1.加载数据库驱动 http://search.maven.org/    mysql java
@@ -13,8 +16,8 @@ public class Test {
         // mysql	mysql-connector-java    5.1.45
         // Gradle/Grails
         // compile 'mysql:mysql-connector-java:5.1.45'
-        new Driver();
-        // 2.获取数据库连接
+        new Driver();//加载驱动
+        // 2.获取数据库连接  静态方法
         Connection connection= DriverManager.getConnection("jdbc:mysql:///","root","system");
         //3. 准备预编译语句
         String sql = "INSERT INTO db.ip VALUE(NULL, ?, ?, ?)";
