@@ -15,53 +15,41 @@ import java.sql.SQLException;
  * 把数据从txt写入数据库
  */
 public class parer {
-    private static int couter;
 
     public static void main(String[] args) throws SQLException {
-        // 按行读取数据
         new Driver();
-        // 保证资源可以顺利关闭
-        try (BufferedReader reader = new BufferedReader(new FileReader("ip.txt"));
-             Connection connection = DriverManager.getConnection("jdbc:mysql:///", "root", "system");
+        try (
+                BufferedReader reader = new BufferedReader(new FileReader("ip.txt"));
+                Connection connection = DriverManager.getConnection("jdbc:mysql:///", "root", "system");
         ) {
             connection.setAutoCommit(false);
             String line;
             PreparedStatement preparedStatement = null;
-            int n = 0;
+            int counter = 0;
             String sql = "INSERT INTO db.ip VALUE(NULL, ?, ?, ?)";
             preparedStatement = connection.prepareStatement(sql);
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
-                String min = line.split("\\s+")[0];//至少一个空格
+                String min = line.split("\\s+")[0];
                 String max = line.split("\\s+")[1];
-                String loc = line.replace(min, "").replace(max, "");
+                String loc = line.replaceFirst(min, "").replaceFirst(max, "").trim();
 
                 preparedStatement.setString(1, min);
                 preparedStatement.setString(2, max);
                 preparedStatement.setString(3, loc);
-                //4. 添加
-                preparedStatement.addBatch();
-                //5. 释放相关资源
-                //preparedStatement.close();
-                //connection.close();
-                System.out.println(couter++);
-                if (couter++ == 10000) {
-                    System.out.println(couter * (++n));
+                preparedStatement.addBatch(); // add batch: 批处理\ [bætʃ]
+
+                if (counter++ == 10000) {
+                    System.out.println(counter);
                     preparedStatement.executeBatch();
-                    preparedStatement = null;
-                    couter = 0;
+                    counter = 0;
                 }
             }
             if (preparedStatement != null) {
-                System.out.println(couter);
+                System.out.println(counter);
                 preparedStatement.executeBatch();
             }
             connection.commit();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (IOException | SQLException e) {
             e.printStackTrace();
         }
     }
