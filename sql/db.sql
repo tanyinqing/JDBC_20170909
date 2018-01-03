@@ -26,3 +26,6 @@ INSERT INTO db.ip VALUE (NULL ,'0.0.0.0','0.255.255.255','ANA 保留地址');
 
 TRUNCATE db.ip;-- 清空数据库
 
+
+
+
