@@ -15,7 +15,7 @@
 - [先把文本数据，读到一个对象的列表里，在循环列表把数据写入数据库](src/main/java/demo/Parser1.java)
 - [从键盘输入一个ip地址 查询出它的地理位置](src/main/java/demo/Loc.java)
 - [利用map统计城市ip的个数，和map的常规遍历](src/main/java/demo/Stat.java)
-    - **map的变量和利用map统计个数**
+    - **map的遍历和利用map统计个数**
 - [利用sql语句来操作数据库](sql/db.sql)
     - 包括mysql中专门处理ip的函数 inet_aton
 - [存储ip的文本文件](ip.txt)
